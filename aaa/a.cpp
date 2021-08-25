@@ -1,30 +1,24 @@
 #include <bits/stdc++.h>
+#include <functional>  //これが必要
+
 using namespace std;
 
 int main() {
     int N;
     cin >> N;
-   
-    vector<int> vec(N);
-
-    for (int i = 0; i < N; i++) {
-        cin >> vec.at(i);
+    vector<int> D(N);
+    for(int i=0;i<N;i++){
+        cin >> D.at(i);
     }
+    sort(D.begin(),D.end(),greater<int>());
+    
+    int sum =1;
 
-    int count = 0;
-    int i = 1;
-
-    while (1) {
-        if (i == 2) {
-            cout << count << endl;
-            return 0;
-        }
-        i = vec.at(i - 1);
-        count++;
- 
-        if (count >= N) {
-            break;
+    for(int i =1;i<N;i++){
+        if(D.at(i -1) > D.at(i)){
+            sum = sum + 1;
         }
     }
-    cout << -1 << endl;
+
+    cout << sum << endl;
 }
